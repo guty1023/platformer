@@ -39,7 +39,7 @@ public class PlayerControler : MonoBehaviour
     // 1 프레임에 마다 호줄된다. - 반복적으로 실행
     void Update()
     {
-        isGrounded = Phtsics.Raycast(transform.postion, Vector2.down,2)
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundLayer);
 
         // 플레이어의 입력 값을 받아와야 합니다.
 
@@ -56,7 +56,7 @@ public class PlayerControler : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector3(transform, position.x, transform.position.y - groundDistance));
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - groundDistance));
     }
 }
